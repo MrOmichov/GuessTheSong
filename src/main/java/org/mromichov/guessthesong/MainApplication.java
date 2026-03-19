@@ -2,22 +2,24 @@ package org.mromichov.guessthesong;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class MainApplication extends Application {
+
     @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("ui/main-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
+    public void start(Stage stage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("view/main-view.fxml")
+        );
+
+        Parent root = loader.load();
+
+        stage.setScene(new Scene(root));
+        stage.setTitle("Guess the Song");
         stage.show();
     }
 
-    public static void main(String[] args) {
-        launch();
-    }
+
 }

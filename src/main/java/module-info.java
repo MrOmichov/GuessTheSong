@@ -11,6 +11,6 @@ module org.mromichov.guessthesong {
 
     opens org.mromichov.guessthesong to javafx.fxml, com.google.gson;
     exports org.mromichov.guessthesong;
-    exports org.mromichov.guessthesong.ui;
-    opens org.mromichov.guessthesong.ui to javafx.fxml;
+    exports org.mromichov.guessthesong.view;
+    opens org.mromichov.guessthesong.view to javafx.fxml;
 }

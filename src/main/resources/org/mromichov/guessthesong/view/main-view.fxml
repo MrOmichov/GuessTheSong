@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="TOP_CENTER" minHeight="450" minWidth="800" spacing="10.0" VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.mromichov.guessthesong.view.View">
+   <children>
+       <Label fx:id="gameTitle" text="Guess the Piece of Music">
+            <font>
+               <Font name="System Bold" size="24.0" />
+            </font>
+       </Label>
+      <ProgressBar fx:id="loading" managed="false" minHeight="10" minWidth="50" prefWidth="200.0" progress="0.0" visible="false" />
+      <VBox fx:id="mainMenuContainer" alignment="CENTER" spacing="20.0" VBox.vgrow="ALWAYS">
+          <padding>
+              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+          </padding>
+          <Button fx:id="playButton" onAction="#onPlayButtonClick" text="Play!" />
+      </VBox>
+
+       <VBox fx:id="guessingContainer" alignment="CENTER" managed="false" spacing="20.0" visible="false">
+           <padding>
+               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+           </padding>
+           <TextField fx:id="guessField" promptText="Enter your guess" />
+           <Button fx:id="guessButton" mnemonicParsing="false" onAction="#onGuessButtonClick" text="Guess" />
+       </VBox>
+
+      <VBox fx:id="answeredContainer" alignment="CENTER" layoutX="10.0" layoutY="10.0" managed="false" spacing="20.0" visible="false">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+             <Label fx:id="rightAnswer" text="rightAnswerPlaceHolder">
+                 <font>
+                     <Font name="System" size="16.0" />
+                 </font>
+             </Label>
+             <Button fx:id="nextButton" mnemonicParsing="false" onAction="#onNextButtonClick" text="Next" />
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>
