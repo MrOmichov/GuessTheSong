@@ -18,6 +18,8 @@
               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
           </padding>
           <Button fx:id="playButton" onAction="#onPlayButtonClick" text="Play!" />
+          <Button fx:id="sourceFileButton" onAction="#onSourceFileButtonClick" text="Source file" />
+          <fx:include source="file-view.fxml" fx:id="fileView" />
       </VBox>
 
        <VBox fx:id="guessingContainer" alignment="CENTER" managed="false" spacing="20.0" visible="false">
@@ -39,6 +41,7 @@
              </Label>
              <Button fx:id="nextButton" mnemonicParsing="false" onAction="#onNextButtonClick" text="Next" />
       </VBox>
+
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

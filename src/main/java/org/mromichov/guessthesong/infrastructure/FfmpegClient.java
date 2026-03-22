@@ -17,6 +17,7 @@ public class FfmpegClient {
         String snippetFileName = fullAudioFile.getParent() + File.separator + snippetPrefix + fullAudioFile.getName();
         int exitCode = executor.execute(
                 "ffmpeg",
+                "-y",
                 "-ss", Integer.toString(startSeconds),
                 "-t", Integer.toString(snippetLen),
                 "-i", fullAudioFile.getAbsolutePath(),

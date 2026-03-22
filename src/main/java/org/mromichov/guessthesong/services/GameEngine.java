@@ -20,14 +20,13 @@ public class GameEngine {
     private final MusicLibrary musicLibrary = new MusicLibrary(); // TODO не пересоздавать его при запуске новой игры без изменений
     private List<PieceOfMusic> currentPlaylist;
 
-    private int numberOfRounds = 10; // TODO считывать из файла настроек
+    private int numberOfRounds = 5; // TODO считывать из файла настроек
     private int currentRound = 0;   // 0 - первый раунд
 
     private MediaPlayer mediaPlayer;
 
-    // TODO готовить и запускать игру, если раунд = 0
     public CompletableFuture<Void> startRound(Consumer<Double> onProgress) {
-        if (currentRound == 0)
+        if ((currentRound %= numberOfRounds) == 0)
              return prepareGame(onProgress)
                      .thenAccept(v -> {
                          audioManager.setPrepareNextRound(audioManager.prepareRound(String.valueOf(currentRound+1), currentPlaylist.get(currentRound+1)));
@@ -42,6 +41,7 @@ public class GameEngine {
     private CompletableFuture<Void> prepareGame(Consumer<Double> onProgress) {
         return createMusicLibraryAsync(onProgress)
                 .thenApply(v -> {
+                    fileWorker.deleteFiles(new File(AudioManager.MUSIC_DIR));
                     currentPlaylist = musicLibrary.generateAndGetRandomPieces(numberOfRounds);
                     return currentPlaylist;
                 })
@@ -58,6 +58,7 @@ public class GameEngine {
     }
 
     public String checkAnswer(String answer) {
+        mediaPlayer.stop();
         // TODO currentPlaylist.get(currentRound) надо как-то заменить на поле с текущей pieceOfMusic
         int answeredRound = currentRound++;
         String rightAnswer = currentPlaylist.get(answeredRound).getTitle();

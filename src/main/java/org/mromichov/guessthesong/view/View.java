@@ -12,6 +12,10 @@ public class View {
     // Main screen
     @FXML private VBox mainMenuContainer;
     @FXML private Button playButton;
+    @FXML private Button sourceFileButton;
+    @FXML private VBox fileView;
+
+    @FXML private FileView fileViewController;
 
     // Loading
     @FXML private ProgressBar loading;
@@ -44,6 +48,8 @@ public class View {
         answeredContainer.visibleProperty().bind(Bindings.equal(viewModel.stateProperty(), GameState.ANSWERED));
         answeredContainer.managedProperty().bind(Bindings.equal(viewModel.stateProperty(), GameState.ANSWERED));
         answeredContainer.disableProperty().bind(viewModel.isLoadingProperty());
+
+        fileViewController.setViewModel(viewModel);
     }
 
     public void onPlayButtonClick(ActionEvent actionEvent) {
@@ -57,5 +63,9 @@ public class View {
 
     public void onNextButtonClick(ActionEvent actionEvent) {
         viewModel.startRound();
+    }
+
+    public void onSourceFileButtonClick(ActionEvent actionEvent) {
+        viewModel.showChangingFile(true);
     }
 }

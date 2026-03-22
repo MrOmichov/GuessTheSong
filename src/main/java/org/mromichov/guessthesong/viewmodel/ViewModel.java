@@ -10,6 +10,7 @@ public class ViewModel {
     private final ObjectProperty<GameState> state = new SimpleObjectProperty<>(GameState.MAIN_MENU);
     private final BooleanProperty isLoading = new SimpleBooleanProperty(false);
     private final DoubleProperty progress = new SimpleDoubleProperty();
+    private final BooleanProperty isChangingFile = new SimpleBooleanProperty(false);
 
     public void startRound() {
         isLoading.set(true);
@@ -45,4 +46,12 @@ public class ViewModel {
         return state;
     }
 
+    public BooleanProperty isChangingFileProperty() {
+        return isChangingFile;
+    }
+
+    public void showChangingFile(boolean b) {
+        isChangingFile.set(b);
+        System.out.println(isChangingFile.get());
+    }
 }

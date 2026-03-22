@@ -11,7 +11,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class AudioManager {
     // TODO вынести в файл настроек
-    private static final String MUSIC_DIR = "music";
+    public static final String MUSIC_DIR = "music";
     private static final String SNIPPET_PREFIX = "snippet";
     private static final int SNIPPET_LEN = 3;
 
